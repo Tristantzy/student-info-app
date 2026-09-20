@@ -1,0 +1,445 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 20px 20px 96px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #9f25eb;
+}
+
+h2 {
+    color: #9f25eb;
+    margin-top: 0;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: white;
+    color: #222222;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #9f25eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#profileData {
+    text-align: left;
+    margin-top: 10px;
+}
+
+#profileData p {
+    margin: 6px 0;
+}
+
+.home-stat {
+    font-weight: bold;
+    color: #9f25eb;
+    margin: 0 0 6px;
+}
+
+.count-text {
+    text-align: left;
+    font-size: 13px;
+    color: #777777;
+    margin: 14px 0 0;
+}
+
+/* Labels and helper text */
+.field-label {
+    text-align: left;
+    margin: 14px 0 0;
+    font-size: 14px;
+    color: #555555;
+}
+
+.selected-hint {
+    text-align: left;
+    font-size: 13px;
+    color: #777777;
+    margin: 8px 0 0;
+}
+
+/* Choice buttons (year level and year filter) */
+.year-options,
+.filter-options {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.year-options {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.filter-options {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.chip {
+    width: auto;
+    margin-top: 0;
+    padding: 12px 4px;
+    font-size: 14px;
+    background: white;
+    color: #9f25eb;
+    border: 2px solid #9f25eb;
+    border-radius: 10px;
+}
+
+.chip.selected {
+    background: #9f25eb;
+    color: white;
+}
+
+/* Red border for invalid fields */
+.invalid {
+    border-color: #e53935 !important;
+    box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+}
+
+.year-options.invalid {
+    box-shadow: none;
+    outline: 2px solid #e53935;
+    outline-offset: 4px;
+    border-radius: 10px;
+}
+
+/* Toast messages */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 92px;
+    transform: translateX(-50%);
+    max-width: 90%;
+    padding: 12px 20px;
+    border-radius: 999px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+.toast.success {
+    background: #2e7d32;
+}
+
+.toast.error {
+    background: #e53935;
+}
+
+/* Bottom navigation bar */
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    background: white;
+    border-top: 1px solid #e6dff0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+    padding: 6px 0 calc(6px + env(safe-area-inset-bottom, 0px));
+    z-index: 900;
+}
+
+.bottom-nav .nav-item {
+    flex: 1;
+    width: auto;
+    margin: 0;
+    padding: 8px 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: none;
+    border-radius: 0;
+    color: #8a7f9c;
+    font-size: 11px;
+}
+
+.bottom-nav .nav-item svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.bottom-nav .nav-item.active {
+    color: #9f25eb;
+    font-weight: bold;
+}
+
+/* Student cards */
+.student-card {
+    background: #f4f0fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.student-card p {
+    margin: 4px 0;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #9f25eb;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.card-name {
+    font-weight: bold;
+    color: #2b1745;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.card-id {
+    color: #6b5b80;
+    font-size: 12px;
+}
+
+.badge {
+    flex-shrink: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #e0e0e0;
+    color: #444444;
+}
+
+.badge-1 { background: #e6f4ea; color: #2e7d32; }
+.badge-2 { background: #e3f2fd; color: #1565c0; }
+.badge-3 { background: #fff3e0; color: #ef6c00; }
+.badge-4 { background: #fce4ec; color: #ad1457; }
+
+.student-card .card-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.student-card .card-buttons button {
+    flex: 1;
+    margin-top: 0;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.btn-delete {
+    background: #e53935 !important;
+}
+
+.btn-delete:active {
+    background: #c62828 !important;
+}
+
+.welcome-message {
+    background-color: #f4f0fa;
+    border: 2px solid rgba(159, 37, 235, 0.15);
+    border-radius: 12px;
+    padding: 20px 16px;
+    width: 85%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px -5px rgba(159, 37, 235, 0.15);
+}
+
+.welcome-message h2 {
+    color: #9f25eb;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.welcome-message p {
+    color: #4a2a6a;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-transform: none;
+    margin-bottom: 6px;
+}
+
+/* Smaller phones */
+@media (max-width: 420px) {
+    body {
+        padding: 12px 12px 96px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #14101c;
+}
+
+body.dark-mode .container {
+    background: #1f1830;
+    color: #f0f0f0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #b388ff;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+    background: #2a2438;
+    color: #ffffff;
+    border: 1px solid #5a4a7a;
+}
+
+body.dark-mode input::placeholder {
+    color: #b0a8c4;
+    opacity: 1;
+}
+
+body.dark-mode #profileData p {
+    color: #f0f0f0;
+}
+
+body.dark-mode .home-stat {
+    color: #b388ff;
+}
+
+body.dark-mode .field-label,
+body.dark-mode .selected-hint,
+body.dark-mode .count-text {
+    color: #c9bfe0;
+}
+
+body.dark-mode .chip {
+    background: #2a2438;
+    color: #b388ff;
+    border-color: #5a4a7a;
+}
+
+body.dark-mode .chip.selected {
+    background: #9f25eb;
+    color: #ffffff;
+    border-color: #b388ff;
+}
+
+body.dark-mode .bottom-nav {
+    background: #1f1830;
+    border-top: 1px solid #3a2f52;
+}
+
+body.dark-mode .bottom-nav .nav-item {
+    color: #a99ec4;
+}
+
+body.dark-mode .bottom-nav .nav-item.active {
+    color: #b388ff;
+}
+
+/* Cards stay light in dark mode so the text is easy to read */
+body.dark-mode .student-card {
+    background: #f4f0fa;
+}
+
+body.dark-mode .student-card p {
+    color: #222222 !important;
+}
+
+body.dark-mode .student-card .card-buttons button {
+    color: #ffffff;
+}
+
+body.dark-mode .welcome-message {
+    background-color: #2a2438;
+    border: 2px solid rgba(179, 136, 255, 0.15);
+    box-shadow: 0 10px 25px -5px rgba(179, 136, 255, 0.15);
+}
+
+body.dark-mode .welcome-message h2 {
+    color: #b388ff;
+}
+
+body.dark-mode .welcome-message p {
+    color: #e0d5f0;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student App</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- Toast message (shows short success / error messages) -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <div class="container">
+            <h1>Student Information App</h1>
+            <div class="welcome-message">
+                <h2>Welcome to student information</h2>
+                <p>Welcome to my mobile application. Take a look at the About page or Register</p>
+            </div>
+            <p class="home-stat" id="homeCount"></p>
+            <button type="button" onclick="openRegister()">Register a Student</button>
+            <button type="button" id="darkModeBtn">Dark Mode</button>
+            <button type="button" onclick="exitApp()">Exit</button>
+        </div>
+    </div>
+
+    <!-- Student Profile Page -->
+    <div id="profilePage" class="page">
+        <div class="container">
+            <h2>Student Profile</h2>
+
+            <input type="search" id="searchInput" placeholder="Search name, ID, or course">
+
+            <select id="sortSelect">
+                <option value="name-asc">Sort: Name (A to Z)</option>
+                <option value="name-desc">Sort: Name (Z to A)</option>
+                <option value="year">Sort: Year level</option>
+                <option value="newest">Sort: Newest first</option>
+            </select>
+
+            <p class="field-label">Filter by year</p>
+            <div class="filter-options" id="filterOptions">
+                <button type="button" class="chip filter-chip selected" data-year="All">All</button>
+                <button type="button" class="chip filter-chip" data-year="1st Year">1st</button>
+                <button type="button" class="chip filter-chip" data-year="2nd Year">2nd</button>
+                <button type="button" class="chip filter-chip" data-year="3rd Year">3rd</button>
+                <button type="button" class="chip filter-chip" data-year="4th Year">4th</button>
+            </div>
+
+            <p class="count-text" id="studentCount"></p>
+            <div id="profileData"></div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page">
+        <div class="container">
+            <h2>About</h2>
+            <p><strong>App Name:</strong> Student Information App</p>
+            <p><strong>Developer:</strong> Tristan Nuñez</p>
+            <p><strong>Course/Section:</strong> BSCS2A</p>
+            <p><strong>School:</strong> Bicol University</p>
+        </div>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="registerPage" class="page">
+        <div class="container">
+            <h2 id="formTitle">Student Registration</h2>
+            <form id="studentForm" novalidate>
+                <input type="hidden" id="editIndex" value="">
+                <input type="text" id="studentName" placeholder="Student Name">
+                <input type="text" id="studentID" placeholder="Student ID">
+
+                <!-- Course: pick from a list (edit this list to match your school) -->
+                <select id="course">
+                    <option value="">Select Course</option>
+                    <option value="BSCS">BSCS - Computer Science</option>
+                    <option value="BSIT">BSIT - Information Technology</option>
+                    <option value="BSIS">BSIS - Information Systems</option>
+                    <option value="BSCpE">BSCpE - Computer Engineering</option>
+                    <option value="BSN">BSN - Nursing</option>
+                    <option value="BSBA">BSBA - Business Administration</option>
+                    <option value="BSA">BSA - Accountancy</option>
+                    <option value="BSEd">BSEd - Secondary Education</option>
+                    <option value="BEEd">BEEd - Elementary Education</option>
+                    <option value="Other">Other (type it)</option>
+                </select>
+                <input type="text" id="otherCourse" class="hidden" placeholder="Enter your course">
+
+                <!-- Year level: tap a choice instead of typing -->
+                <p class="field-label">Year Level</p>
+                <div class="year-options" id="yearOptions">
+                    <button type="button" class="chip year-chip" data-year="1st Year">1st</button>
+                    <button type="button" class="chip year-chip" data-year="2nd Year">2nd</button>
+                    <button type="button" class="chip year-chip" data-year="3rd Year">3rd</button>
+                    <button type="button" class="chip year-chip" data-year="4th Year">4th</button>
+                </div>
+                <p class="selected-hint">Selected: <span id="selectedYear">-</span></p>
+                <input type="hidden" id="yearLevel" value="">
+
+                <input type="email" id="email" placeholder="Email">
+                <input type="text" id="contact" placeholder="Contact Number">
+                <button type="submit" id="submitBtn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bottom navigation bar -->
+    <nav class="bottom-nav">
+        <button type="button" class="nav-item active" data-page="homePage" onclick="showPage('homePage')">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5L12 4l9 7.5"/><path d="M5 10.5V20h14v-9.5"/></svg>
+            <span>Home</span>
+        </button>
+        <button type="button" class="nav-item" data-page="registerPage" onclick="openRegister()">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M19 8v6M16 11h6"/></svg>
+            <span>Register</span>
+        </button>
+        <button type="button" class="nav-item" data-page="profilePage" onclick="showPage('profilePage')">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7"/><path d="M18.5 14.7c1.9.7 3 2.3 3 5.3"/></svg>
+            <span>Profile</span>
+        </button>
+        <button type="button" class="nav-item" data-page="aboutPage" onclick="showPage('aboutPage')">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.6" fill="currentColor"/></svg>
+            <span>About</span>
+        </button>
+    </nav>
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
