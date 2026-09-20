@@ -2,7 +2,8 @@
 
 A simple Android app for registering and managing student records, built with Apache Cordova using plain HTML, CSS, and JavaScript. Everything is saved on the device, so it works offline.
 
-<!-- To add a screenshot: save one as screenshot.png in this folder, then remove this line's comment marks around the next line -->
+**Download:** [app-debug.apk](https://github.com/Tristantzy/student-info-app/releases/latest)
+
 ![Screenshot of the app](screenshot.png)
 
 ## Features
