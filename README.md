@@ -17,7 +17,7 @@ A simple Android app for registering and managing student records, built with Ap
 - **Edit and delete** records (delete asks for confirmation)
 - **Student cards** with an initials avatar and a colored year badge
 - **Bottom navigation bar** (Home, Register, Profile, About)
-- **Dark mode** that is remembered between launches
+- **Dark mode** that is remembered between launche.
 - **Student count** on the home page and the profile list
 
 ## Built with
