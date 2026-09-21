@@ -1,6 +1,6 @@
 # Student Information App
 
-A simple Android app for registering and managing student records, built with Apache Cordova using plain HTML, CSS, and JavaScript. Everything is saved on the device, so it works offline..
+A simple Android app for registering and managing student records, built with Apache Cordova using plain HTML, CSS, and JavaScript. Everything is saved on the device, so it works offline.
 
 **Download:** [app-debug.apk](https://github.com/Tristantzy/student-info-app/releases/latest)
 
