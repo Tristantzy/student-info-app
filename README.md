@@ -10,14 +10,14 @@ A simple Android app for registering and managing student records, built with Ap
 
 - **Register students** with name, student ID, course, year level, email, and contact number
 - **Pick, don't type:** course from a dropdown (with an "Other" option) and year level from tap buttons
-- **Validation** with red borders on invalid fields and short toast messages
+- **Validation** with red borders on invalid fields and short toast messages.
 - **No duplicate student IDs**
 - **Profile list** with search by name, ID, or course
 - **Filter by year level** and **sort** by name, year, or newest
 - **Edit and delete** records (delete asks for confirmation)
 - **Student cards** with an initials avatar and a colored year badge
 - **Bottom navigation bar** (Home, Register, Profile, About)
-- **Dark mode** that is remembered between launche.
+- **Dark mode** that is remembered between launches.
 - **Student count** on the home page and the profile list
 
 ## Built with
