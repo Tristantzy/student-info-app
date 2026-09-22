@@ -26,7 +26,7 @@ A simple Android app for registering and managing student records, built with Ap
 - [Apache Cordova](https://cordova.apache.org/) for the Android build
 - `localStorage` for saving data on the device
 
-## Getting start
+## Getting started
 
 ### What you need
 
